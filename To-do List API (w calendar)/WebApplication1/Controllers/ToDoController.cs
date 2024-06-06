@@ -1,7 +1,8 @@
-﻿using Google.Apis.Auth;
+﻿using Google.Apis.Calendar.v3;
+using Google.Apis.Calendar.v3.Data;
+using Google.Apis.Auth;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System.Threading.Tasks;
 using ToDoApi.Model;
 using WebApplication1;
 
@@ -12,6 +13,12 @@ namespace ToDoApi.Controllers
     public class ToDoController : ControllerBase
     {
         private static List<ToDo> toDoTasks = new List<ToDo>();
+        private readonly CalendarService _calendarService;
+
+        public ToDoController(CalendarService calendarService)
+        {
+            _calendarService = calendarService;
+        }
 
         //Отримання усіх заваднь
         [HttpGet]
@@ -45,14 +52,30 @@ namespace ToDoApi.Controllers
             newTask.Id = GenerateId();
             toDoTasks.Add(newTask);
 
+            var calendarEvent = new Event()
+            {
+                Summary = newTask.Title,
+                Description = newTask.Description,
+                Start = new EventDateTime()
+                {
+                    DateTime = newTask.DueDate,
+                    TimeZone = "UTC"
+                },
+                End = new EventDateTime()
+                {
+                    DateTime = newTask.DueDate.AddHours(1),
+                }
+            };
+
+            await _calendarService.Events.Insert(calendarEvent, "primary").ExecuteAsync();
+
             return CreatedAtAction(nameof(GetAllTasks), new { id = newTask.Id }, newTask);
         }
-
 
         //Оновлення завдання за його id
         [HttpPut("{id}")]
         public IActionResult UpdateTask(int id, [FromBody] ToDo updatedTask)
-        {
+        {          
             var existingTask = toDoTasks.Find(t => t.Id == id);
             if (existingTask == null)
             {
@@ -66,8 +89,10 @@ namespace ToDoApi.Controllers
 
             existingTask.Title = updatedTask.Title;
             existingTask.Description = updatedTask.Description;
+            existingTask.DueDate = updatedTask.DueDate;
 
             return Ok(existingTask);
+            //return NoContent();
         }
 
         //Оновлення статусу завдання за його id
@@ -83,7 +108,8 @@ namespace ToDoApi.Controllers
             if (string.IsNullOrWhiteSpace(status))
             {
                 return BadRequest("Invalid status.");
-            }           
+            }
+
             if (status != "Очікує виконання" && status != "Виконано" && status != "У процесі" && status != "Пропущено" && status != "Скрите")
             {
                 return BadRequest("Недопустимий статус. Статус повинен бути 'очікує виконання', 'виконано', 'у процесі', 'пропущено' або 'скрите'.");

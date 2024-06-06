@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2x3v1iaNB9pLRkh6n7Ka3BEkw2f8JCgSfBTKfGHtB9o4yBpIN0KR2rOmuyQGbeqP4Dx9Z+xydD1hDj1YJXim6w==",
+  "dgSpecHash": "Puw6RYN/kXEpwd32Dvf8y+Nu6zLI2d5OCY2scX487P1BeU0JCAGWVdZbLwtgNBFPs1GB1SBA+YwubzgC9vpxKw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\iclownic\\Desktop\\Code\\To-do List API (w!o calendar)\\WebApplication1\\WebApplication1.csproj",
+  "projectFilePath": "C:\\Users\\iclownic\\Desktop\\Code\\To-do List API (w calendar)\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\iclownic\\.nuget\\packages\\fsharp.core\\6.0.0\\fsharp.core.6.0.0.nupkg.sha512",
     "C:\\Users\\iclownic\\.nuget\\packages\\google.apis\\1.68.0\\google.apis.1.68.0.nupkg.sha512",
