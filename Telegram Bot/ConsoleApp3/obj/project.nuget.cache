@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "hkfLmSqtfnqoi1WQDIJiJpR2x/hn8MpDKzdvOUBgjNy0y9rabGocOPEmD2c9npHT62FuI1/1+wnAnsQEZ55wtg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\iclownic\\Documents\\Visual Studio 2022\\Project\\IK_33_2term\\Telegram Bot (без календаря)\\ConsoleApp3\\ConsoleApp3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\iclownic\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\iclownic\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\iclownic\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512",
+    "C:\\Users\\iclownic\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\iclownic\\.nuget\\packages\\telegram.bot\\19.0.0\\telegram.bot.19.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
